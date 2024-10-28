@@ -1,0 +1,76 @@
+{
+    "name": "tt-linan-agent",
+    "version": "3.0.0",
+    "description": "Dashboard-plugin för TT-linan (agent)",
+    "repository": "https://github.com/ttab/dashboard-plugins/",
+    "private": true,
+    "main": "dist/index.js",
+    "scripts": {
+        "prompt": "node ./scripts/prompt.js",
+        "server": "node server.js",
+        "server:hot": "HOT=1 node server.js",
+        "start": "npm-run-all prompt --parallel server dev",
+        "start:hot": "npm-run-all prompt --parallel server:hot",
+        "dev": "webpack --config __tooling__/webpack/webpack.dev.config.js --watch",
+        "build": "webpack --config __tooling__/webpack/webpack.prod.config.js --progress",
+        "test": "jest --colors --no-watchman tests",
+        "upload:s3": "npm run build && node ./scripts/upload.js",
+        "test:watch": "node_modules/.bin/jest  --coverage --colors --watch tests",
+        "postversion": "./scripts/run-postversion.sh && npm run git:commit",
+        "git:commit": "git add package.json package-lock.json manifest.json && git commit -m \"Bumped version to v$npm_package_version\""
+    },
+    "jest": {
+        "testPathIgnorePatterns": [
+            "/node_modules/",
+            "/dist/",
+            "/.history/"
+        ],
+        "transform": {
+            "^.+\\.(js|jsx)$": "babel-jest"
+        }
+    },
+    "devDependencies": {
+        "@babel/core": "^7.4.0",
+        "@babel/preset-env": "^7.4.2",
+        "@babel/preset-react": "^7.0.0",
+        "autoprefixer": "^9.5.0",
+        "aws-sdk": "^2.371.0",
+        "babel-eslint": "10.0.2",
+        "babel-loader": "^8.0.5",
+        "babel-plugin-styled-components": "^1.10.0",
+        "colors": "^1.3.3",
+        "copy-webpack-plugin": "^6.2.0",
+        "cors": "^2.8.1",
+        "css-loader": "^1.0.0",
+        "eslint": "6.0.1",
+        "eslint-loader": "2.2.1",
+        "eslint-plugin-react": "^7.12.4",
+        "express": "^4.16.4",
+        "ip": "^1.1.5",
+        "jest": "^26.5.0",
+        "lodash": "^4.17.11",
+        "mini-css-extract-plugin": "^0.4.2",
+        "nodemon": "^1.18.10",
+        "npm": "^6.14.8",
+        "npm-run-all": "^4.1.5",
+        "os": "^0.1.1",
+        "postcss-loader": "^3.0.0",
+        "postcss-preset-env": "^6.6.0",
+        "prompt": "^1.0.0",
+        "readline-sync": "^1.4.9",
+        "string-replace-loader": "^2.1.1",
+        "style-loader": "^0.23.1",
+        "styled-components": "^4.2.0",
+        "terser-webpack-plugin": "^4.2.2",
+        "url-loader": "^1.1.2",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.3.0",
+        "webpack-dev-middleware": "3.7.0",
+        "webpack-hot-middleware": "2.25.0",
+        "webpack-merge": "^4.2.1",
+        "zlib": "^1.0.5"
+    },
+    "dependencies": {
+        "uuid": "^8.3.1"
+    }
+}
