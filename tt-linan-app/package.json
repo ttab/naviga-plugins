@@ -2,7 +2,7 @@
     "name": "tt-linan-app",
     "version": "3.1.1",
     "description": "Dashboard-plugin för TT-linan (app)",
-    "repository": "https://github.com/ttab/dashboard-plugins/",
+    "repository": "https://github.com/ttab/naviga-plugins",
     "private": true,
     "main": "dist/index.js",
     "scripts": {

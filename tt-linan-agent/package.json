@@ -2,7 +2,7 @@
     "name": "tt-linan-agent",
     "version": "3.0.0",
     "description": "Dashboard-plugin för TT-linan (agent)",
-    "repository": "https://github.com/ttab/dashboard-plugins/",
+    "repository": "https://github.com/ttab/naviga-plugins",
     "private": true,
     "main": "dist/index.js",
     "scripts": {
